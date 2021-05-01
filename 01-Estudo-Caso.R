@@ -4,98 +4,90 @@
 setwd("/mnt/sources/Estudos/R/cafe-com-dados")
 
 # Instalar e carregar os pacotes
-install.packages("mlbench")
-install.packages("caret")
-install.packages("e1071")
+#install.packages("mlbench")
+#install.packages("caret")
+#install.packages("e1071")
+#install.packages("randomForest")
 
 library(mlbench)
 library(caret)
 library(e1071)
+library(randomForest)
 
-# Carregar o dataset
+# Carregar o dadaset
 dados <- read.csv("dados/db-cartao-credito.csv")
 View(dados)
 
-# Verifica o balanceamento das variáveis
+
+# Verificar o balanceamento das variáveis
 skewness(dados$LIMIT_BAL)
 histogram(dados$LIMIT_BAL)
 
-# Sumariza os dados
+
 summary(dados)
 str(dados)
 
-
-# 1 - Dados com vies
-preProcessamentoParams <- preProcess(dados, method = c("BoxCox"))
-print(preProcessamentoParams)
-
-# Transformar o dataset usando os pârametros
-transformed <- predict(preProcessamentoParams, dados)
-myDadosTrans <- transformed
+# Identificar as variáveis categoricas
+dados$default.payment.next.month <- factor(dados$default.payment.next.month)
+dados$SEX <- factor(dados$SEX)
+dados$EDUCATION <- factor(dados$EDUCATION)
+dados$MARRIAGE <- factor(dados$MARRIAGE)
+dados = na.omit(dados)
 
 
-# Verifica o balanceamento das variáveis 1- respondido
-str(myDadosTrans)
-skewness(dados$LIMIT_BAL)
-skewness(myDadosTrans$LIMIT_BAL)
-histogram(myDadosTrans$LIMIT_BAL)
+# Tratar variáveis com vies
+preProcessParams <- preProcess(dados, method = c("BoxCox"))
+print(preProcessParams)
+
+# Transformacão do dataset usando os parametros
+myDados <- predict(preProcessParams, dados)
+
+# Verificar o balanceamento das variáveis
+skewness(myDados$LIMIT_BAL)
+histogram(myDados$LIMIT_BAL)
 
 
-# 2 - Identificar as variaveis categoricas
-myDadosTrans$default.payment.next.month <- factor(myDadosTrans$default.payment.next.month)
-myDadosTrans$SEX <- factor(myDadosTrans$SEX)
-myDadosTrans$EDUCATION <- factor(myDadosTrans$EDUCATION)
-myDadosTrans$MARRIAGE <- factor(myDadosTrans$MARRIAGE)
-
-myDadosTrans = na.omit(myDadosTrans)
-
-str(myDadosTrans)
-
-
-# Usa Random Forest para encontrar as variaveis mais relevantes
-install.packages("randomForest")
-library(randomForest)
-rfModel = randomForest(myDadosTrans$default.payment.next.month ~ ., data = myDadosTrans, ntree=500)
+# Usa Random Foreste para identificar as variaveis mais relevantes
+rfModel = randomForest(myDados$default.payment.next.month ~ ., data = myDados, ntree=500)
 varImpPlot(rfModel)
 
-
-# Dividir os dados em treino e teste
-row <- nrow(myDadosTrans)
+# Dividir os dados em Treino e Test
+row <- nrow(myDados)
 row
 
 set.seed(12345)
 trainindex <- sample(row, 0.7*row, replace = FALSE)
-training <- myDadosTrans[trainindex,]
-validation <- myDadosTrans[-trainindex,]
+training <- myDados[trainindex, ]
+validation <- myDados[-trainindex,]
+
+# Prepara ois dataser com as melhores variáveis preditoras
+x_train <- training[, c(1,4,5,11,12,13,14,17)]
+y_train <- training[, 24]
 
 
-# Preparar os datasets com as melhores variaveis preditoras
-x_training <- training[, c(2,3,4,5)]
-y_training <- training[, 24]
-
-
-x_validation <- validation[, c(2,3,4,5)]
-y_validation <- validation[, 24]
-
+x_valid <- validation[, c(1,4,5,11,12,13,14,17)]
+y_valid <- validation[, 24]
 
 # Modelo KNN
-knnModel = train(x=x_training, 
-                 y=y_training, 
-                 method = "knn", 
+knnModel = train(x=x_train,
+                 y=y_train,
+                 method="knn",
                  preProc=c("center", "scale"),
                  tuneLength = 10)
 
 knnModel
 
-# Plot da acurácia
+#Plot da acurácia
 plot(knnModel$results$k,
      knnModel$results$Accuracy,
      type="o",
-     xlab="Numero de Vizinhos mais Próximos (K)",
-     ylab="Acyrácia",
-     main="Modelo KNN para Previsão de Concessão de Cartão de Crédito")
+     xlab="Nímero de Vizinhos mais próximos (K)",
+     ylab="Acurácia",
+     main="Modelo KNN para previsão de concessão de cartão de crédito")
 
+knnPred = predict(knnModel, newdata = x_valid)
+confusionMatrix(knnPred, y_valid)
 
-knnPred = predict(knnModel, newdata = x_validation)
-knnPred
-y_validation
+  
+  
+  
