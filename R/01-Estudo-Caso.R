@@ -1,7 +1,7 @@
 # 01-Estudo-Caso - Análise de Dados em Operadoras de Cartão de Crédito 
 
 # Define pasta de trabalho
-setwd("/mnt/sources/Estudos/R/cafe-com-dados")
+setwd("/mnt/sources/Estudos/cafe-com-dados/R")
 
 # Instalar e carregar os pacotes
 #install.packages("mlbench")
@@ -15,7 +15,7 @@ library(e1071)
 library(randomForest)
 
 # Carregar o dadaset
-dados <- read.csv("dados/db-cartao-credito.csv")
+dados <- read.csv("../dados/db-cartao-credito.csv")
 View(dados)
 
 
