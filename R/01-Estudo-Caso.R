@@ -86,6 +86,7 @@ plot(knnModel$results$k,
      main="Modelo KNN para previsão de concessão de cartão de crédito")
 
 knnPred = predict(knnModel, newdata = x_valid)
+knnPred
 confusionMatrix(knnPred, y_valid)
 
   
