@@ -1,5 +1,3 @@
-
-
 from src.tensorflow.customlayers import CustomLayers
 from src.tensorflow.neuralnetwork import NeuralNetwork
 from src.tensorflow.convnet import Convnet
