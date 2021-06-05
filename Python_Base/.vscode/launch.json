@@ -9,12 +9,6 @@
             "type": "python",
             "request": "launch",
             "program": "${workspaceFolder}/start.py",
-            "args": [
-                "--type",
-                "TensorFlow",
-                "--aula",
-                "01"
-            ],
             "console": "integratedTerminal"
         }
     ]
