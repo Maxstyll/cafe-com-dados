@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.8.0 (2021-12-13)
+### Feature
+* Add file poetry.lock ([`20b81d1`](https://github.com/Maxstyll/cafe-com-dados/commit/20b81d13cf60f7b512df792ef14307ebbd114347))
+
 ## v0.7.0 (2021-12-13)
 ### Feature
 * Delete file __init__.py ([`73aed39`](https://github.com/Maxstyll/cafe-com-dados/commit/73aed39e69b107fbb8f3177281009823dc948100))
