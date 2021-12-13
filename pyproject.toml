@@ -1,2 +1,7 @@
+version = "0.5.0"
+
 [semantic_release]
-version_variable=setup.py:__version__
+version_variable = [
+    "setup.py:__version__",
+    "pyproject.toml:version"
+]
