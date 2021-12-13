@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.5.0 (2021-12-13)
+### Feature
+* Update filr __init__.py ([`582c542`](https://github.com/Maxstyll/cafe-com-dados/commit/582c542086f351bd95717d10e3ac7d58eca8c7db))
+
 ## v0.4.0 (2021-12-13)
 ### Feature
 * Update filr __init__.py ([`5cbeef3`](https://github.com/Maxstyll/cafe-com-dados/commit/5cbeef31942954d8749cc7e43cd89f0cfb0aa550))
