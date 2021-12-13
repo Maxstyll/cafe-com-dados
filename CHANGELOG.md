@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.9.0 (2021-12-13)
+### Feature
+* Upgrade build.yml ([`b57c539`](https://github.com/Maxstyll/cafe-com-dados/commit/b57c5398e781df4f0c0de1f93441d6ae09924ff0))
+
 ## v0.8.0 (2021-12-13)
 ### Feature
 * Add file poetry.lock ([`20b81d1`](https://github.com/Maxstyll/cafe-com-dados/commit/20b81d13cf60f7b512df792ef14307ebbd114347))
