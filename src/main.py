@@ -4,3 +4,7 @@ class MAIN:
 
     def start(self):
         print("start projeto")
+
+
+    def finish(self):
+        print("finish projeto")
