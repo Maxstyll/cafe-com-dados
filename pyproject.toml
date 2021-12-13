@@ -6,7 +6,7 @@ authors = ["MeStrak <mestrak@github.com>"]
 
 [tool.semantic_release]
 version_variable = [
-    "dr_sven/__init__.py:__version__",
+    "src/__init__.py:__version__",
     "pyproject.toml:version"
 ]
 branch = "master"
