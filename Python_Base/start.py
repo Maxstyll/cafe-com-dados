@@ -1,5 +1,3 @@
-import argparse
-
 from src import main
 
 def run():
