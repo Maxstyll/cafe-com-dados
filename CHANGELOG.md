@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.7.0 (2021-12-13)
+### Feature
+* Delete file __init__.py ([`73aed39`](https://github.com/Maxstyll/cafe-com-dados/commit/73aed39e69b107fbb8f3177281009823dc948100))
+
 ## v0.6.0 (2021-12-13)
 ### Feature
 * Update filr __init__.py ([`1e8af3e`](https://github.com/Maxstyll/cafe-com-dados/commit/1e8af3e30c84f80b35e86339fa7f7e9617585884))
