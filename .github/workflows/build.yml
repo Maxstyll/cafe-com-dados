@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, 'chore(release):')
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main')
     runs-on: ubuntu-latest
 
     strategy: 
@@ -21,8 +21,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Python ${{ matrix.python-version }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip install python-semantic-release
           git config user.name maxstyll
