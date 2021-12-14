@@ -2,6 +2,10 @@
 
 <!--next-version-placeholder-->
 
+## v0.10.0 (2021-12-13)
+### Feature
+* Add file start.py ([`4019d88`](https://github.com/Maxstyll/cafe-com-dados/commit/4019d882a1d850c3ea45f542e14f03f965f9782f))
+
 ## v0.9.0 (2021-12-13)
 ### Feature
 * Upgrade build.yml ([`b57c539`](https://github.com/Maxstyll/cafe-com-dados/commit/b57c5398e781df4f0c0de1f93441d6ae09924ff0))

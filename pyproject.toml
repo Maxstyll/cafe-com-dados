@@ -1,6 +1,8 @@
 [tool.poetry]
 name = "cafe-com-dados"
 version = "0.10.0"
+description = "A naive serverless data health checker"
+authors = ["Emerson Antonio <maxstyll@github.com>"]
 
 [tool.semantic_release]
 version_variable = [
