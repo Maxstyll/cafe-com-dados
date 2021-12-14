@@ -47,4 +47,4 @@ jobs:
           pip install python-semantic-release
           git config --global user.name github-actions
           git config --global user.email github-actions@github.com
-          semantic-release publish
+          semantic-release publish -D commit_author="github-actions <action@github.com>"
