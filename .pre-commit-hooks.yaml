@@ -1,9 +1,0 @@
-id: cafe_com_dados
-    name: cafe_com_dados
-    description: Automatically upgrade syntax for newer versions.
-    entry: cafe_com_dados
-    language: python
-    types: [python]
-    # for backward compatibility
-    files: ''
-    minimum_pre_commit_version: 0.15.0
